@@ -1,9 +1,5 @@
-visualize_aa_composition_func = function(sequence){
-  if(window.chart!=undefined) {
-    window.chart.destroy()
-  }
-
-  frequency_dict = new ProtParam(sequence).get_amino_acids_percent()
+visualize_aa_composition = function(protparam){
+  frequency_dict = protparam.get_amino_acids_percent()
   labels = []
   data = []
   for (var aa in frequency_dict){
@@ -35,36 +31,39 @@ var protein_analysis = new Vue({
     sequence: ''
   },
   computed: {
+    protparam: function(){
+      return new ProtParam(this.sequence)
+    },
     molecular_weight: function () {
       if(this.sequence == ''){
         return 0
       } else {
-        return new ProtParam(this.sequence).molecular_weight()
+        return this.protparam.molecular_weight()
       }
     },
     gravy: function () {
       if(this.sequence == ''){
         return 0
       } else {
-        return new ProtParam(this.sequence).gravy()
+        return this.protparam.gravy()
       }
     },
     absorbance: function () {
       if(this.sequence == ''){
         return 0
       } else {
-        return new ProtParam(this.sequence).absorbance()
+        return this.protparam.absorbance()
       }
     },
     instability_index: function() {
       if(this.sequence == ''){
         return 0
       } else {
-        return new ProtParam(this.sequence).instability_index()
+        return this.protparam.instability_index()
       }
     }
   },
   updated: function () {
-    visualize_aa_composition_func(this.sequence)
+    visualize_aa_composition(this.protparam)
   }
 })
