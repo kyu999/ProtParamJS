@@ -8,7 +8,7 @@ visualize_aa_composition = function(protparam){
     data.push(prob)
   }
   var ctx = document.getElementById('aa_dist').getContext('2d');
-  new Chart(ctx, {
+  return new Chart(ctx, {
     type: 'bar',
     data: {
         labels: labels,
@@ -20,7 +20,31 @@ visualize_aa_composition = function(protparam){
         }]
     },
     options: {
-      events: []
+      scales: {
+        yAxes: [{ ticks: { beginAtZero:true } }]
+      }
+    }
+  });
+}
+
+visualize_kd_hydrophobicity = function(protparam){
+  var ctx = document.getElementById('kd_hydrophobicity').getContext('2d');
+  return new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: protparam.aa_list,
+        datasets: [{
+            label: "KD Hydrophobicity",
+            backgroundColor: 'rgb(153,204,255)',
+            borderColor: 'rgb(153,204,255)',
+            data: protparam.kd_hydrophobicity(),
+            fill: false
+        }]
+    },
+    options: {
+      scales: {
+        yAxes: [{ ticks: { beginAtZero:true } }]
+      }
     }
   });
 }
@@ -64,6 +88,12 @@ var protein_analysis = new Vue({
     }
   },
   updated: function () {
-    visualize_aa_composition(this.protparam)
+    aa_composition_chart.destroy()
+    aa_composition_chart = visualize_aa_composition(this.protparam)
+    kd_hydrophobicity_chart.destroy()
+    kd_hydrophobicity_chart = visualize_kd_hydrophobicity(this.protparam)
   }
 })
+
+var aa_composition_chart = visualize_aa_composition(new ProtParam(''))
+var kd_hydrophobicity_chart = visualize_kd_hydrophobicity(new ProtParam(''))
