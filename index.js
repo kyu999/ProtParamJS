@@ -3,7 +3,7 @@ visualize_aa_composition = function(protparam){
   labels = []
   data = []
   for (var aa in frequency_dict){
-    var prob = frequency_dict[aa]
+    var prob = frequency_dict[aa] * 100
     labels.push(aa)
     data.push(prob)
   }
@@ -13,7 +13,7 @@ visualize_aa_composition = function(protparam){
     data: {
         labels: labels,
         datasets: [{
-            label: "Amino Acid Composition",
+            label: "Amino Acid Composition(%)",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: data,
