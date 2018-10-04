@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="protparam.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ProtParam for JS</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    </head>
+    <body>
+      <div class="container">
+        <nav class="level"></nav>
+        <nav class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">protein property analysis</p>
+              <p class="title">ProtParamJS</p>
+            </div>
+          </div>
+        </nav>
+
+        <div id="protein_analysis">
+          <div class="columns">
+            <div class="column">
+              <textarea v-model="sequence" class="textarea" placeholder="Write a protein sequence"></textarea>
+            </div>
+          </div>
+
+          <div class="columns">
+
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p>Molecular Weight</p>
+                  <p>{{ molecular_weight }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p>Gravy <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7108955?dopt=Abstract"><i class="far fa-question-circle"></i></a></p>
+                  <p>{{ gravy }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p>Absorbance <a target="_blank" href="https://web.expasy.org/protparam/protparam-doc.html"><i class="far fa-question-circle"></i></a></p>
+                  <p>{{ absorbance }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p>Instability Index <a target="_blank" href="https://web.expasy.org/protparam/protparam-doc.html"><i class="far fa-question-circle"></i></a></p>
+                  <p>{{ instability_index }}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="columns">
+            <div class="column">
+              <canvas id="aa_dist" height="50%"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="index.js"></script>
+    </body>
+</html>
