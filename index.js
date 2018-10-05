@@ -5,6 +5,9 @@ var protein_analysis = new Vue({
   },
   computed: {
     protparams: function(){
+      if(this.fasta == ''){
+        return null
+      }
       records = parse_fasta(this.fasta)
       for (var i in records){
         record = records[i]
@@ -15,12 +18,14 @@ var protein_analysis = new Vue({
     }
   },
   updated: function () {
-    aa_composition_chart.destroy()
-    aa_composition_chart = visualize_aa_composition(this.protparams)
-    kd_hydrophobicity_chart.destroy()
-    kd_hydrophobicity_chart = visualize_kd_hydrophobicity(this.protparams)
-    molecular_weight_chart.destroy()
-    molecular_weight_chart = visualize_molecular_weight(this.protparams)
+    if(this.protparams){
+      aa_composition_chart.destroy()
+      aa_composition_chart = visualize_aa_composition(this.protparams)
+      kd_hydrophobicity_chart.destroy()
+      kd_hydrophobicity_chart = visualize_kd_hydrophobicity(this.protparams)
+      molecular_weight_chart.destroy()
+      molecular_weight_chart = visualize_molecular_weight(this.protparams)
+    }
   }
 })
 
