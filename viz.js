@@ -1,4 +1,4 @@
-visualize_molecular_weight = function(protparams){
+visualize_protparam_properties = function(protparams){
   var color_palette = d3.scaleOrdinal(d3.schemeCategory10)
   var lengths = protparams.map(function(protparam){ return protparam.protein.length })
   var length_zscores = convert_to_zscores(lengths)

@@ -24,7 +24,7 @@ var protein_analysis = new Vue({
       kd_hydrophobicity_chart.destroy()
       kd_hydrophobicity_chart = visualize_kd_hydrophobicity(this.protparams)
       molecular_weight_chart.destroy()
-      molecular_weight_chart = visualize_molecular_weight(this.protparams)
+      molecular_weight_chart = visualize_protparam_properties(this.protparams)
     }
   }
 })
@@ -32,7 +32,7 @@ var protein_analysis = new Vue({
 init_protparams = [new ProtParam('')]
 var aa_composition_chart = visualize_aa_composition(init_protparams)
 var kd_hydrophobicity_chart = visualize_kd_hydrophobicity(init_protparams)
-var molecular_weight_chart = visualize_molecular_weight(init_protparams)
+var molecular_weight_chart = visualize_protparam_properties(init_protparams)
 
 
 $(function() {
