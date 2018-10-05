@@ -146,27 +146,3 @@ visualize_kd_hydrophobicity = function(protparams){
     }
   });
 }
-
-visualize_property = function(protparam){
-  var ctx = document.getElementById('property_radar').getContext('2d');
-  labels = ['Molecular Weight', 'Gravy', 'Absorbance', 'Instability Index']
-  data = [protparam.molecular_weight(), protparam.gravy(), protparam.absorbance(), protparam.instability_index()]
-  return new Chart(ctx, {
-    type: 'radar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: "Property",
-            backgroundColor: 'rgb(153,204,255)',
-            borderColor: 'rgb(153,204,255)',
-            data: data,
-            fill: false
-        }]
-    },
-    options: {
-      scales: {
-        yAxes: [{ ticks: { beginAtZero:true } }]
-      }
-    }
-  });
-}
