@@ -13,7 +13,7 @@ visualize_protparam_properties = function(protparams){
   var datasets = []
   var original_value_datasets = []
   for (var i in protparams){
-    protparam = protparams[i]
+    var protparam = protparams[i]
     var dataset = {
         label: protparam.id,
         borderColor: color_palette(i),
@@ -62,14 +62,16 @@ visualize_protparam_properties = function(protparams){
 }
 
 visualize_aa_composition = function(protparams){
-  color_palette = d3.scaleOrdinal(d3.schemeCategory10)
-  datasets = []
+  aa_kinds = Object.keys(protparams[0].get_amino_acids_percent())
+  var color_palette = d3.scaleOrdinal(d3.schemeCategory10)
+  var datasets = []
   for (var i in protparams){
-    protparam = protparams[i]
-    frequency_dict = protparam.get_amino_acids_percent()
-    labels = []
-    data = []
-    for (var aa in frequency_dict){
+    var protparam = protparams[i]
+    var frequency_dict = protparam.get_amino_acids_percent()
+    var labels = []
+    var data = []
+    for (var j in aa_kinds){
+      var aa = aa_kinds[j]
       var prob = frequency_dict[aa] * 100
       labels.push(aa)
       data.push(prob)
@@ -102,13 +104,13 @@ visualize_aa_composition = function(protparams){
 }
 
 visualize_kd_hydrophobicity = function(protparams){
-  max_length = 0
-  color_palette = d3.scaleOrdinal(d3.schemeCategory10)
-  datasets = []
+  var max_length = 0
+  var color_palette = d3.scaleOrdinal(d3.schemeCategory10)
+  var datasets = []
   for (var i in protparams){
-    protparam = protparams[i]
+    var protparam = protparams[i]
     if(protparam.protein.length>max_length){
-      max_length = protparam.protein.length
+      var max_length = protparam.protein.length
     }
     datasets.push({
       label: protparam.id,

@@ -312,7 +312,7 @@ class ProtParam  {
   }
 
   kd_hydrophobicity(){
-    data = []
+    var data = []
     for (var i in this.protein){
       var aa = this.protein[i]
       data.push(kd[aa])
