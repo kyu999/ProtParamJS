@@ -1,5 +1,5 @@
 visualize_molecular_weight = function(protparams){
-  var color_palette = d3.scale.category20()
+  var color_palette = d3.scaleOrdinal(d3.schemeCategory20)
   var lengths = protparams.map(function(protparam){ return protparam.protein.length })
   var length_zscores = convert_to_zscores(lengths)
   var molecular_weights = protparams.map(function(protparam){ return protparam.molecular_weight() })
@@ -62,7 +62,7 @@ visualize_molecular_weight = function(protparams){
 }
 
 visualize_aa_composition = function(protparams){
-  color_palette = d3.scale.category20()
+  color_palette = d3.scaleOrdinal(d3.schemeCategory20)
   datasets = []
   for (var i in protparams){
     protparam = protparams[i]
@@ -103,7 +103,7 @@ visualize_aa_composition = function(protparams){
 
 visualize_kd_hydrophobicity = function(protparams){
   max_length = 0
-  color_palette = d3.scale.category20()
+  color_palette = d3.scaleOrdinal(d3.schemeCategory20)
   datasets = []
   for (var i in protparams){
     protparam = protparams[i]
