@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
         <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.1.2/math.min.js"></script>
     </head>
     <body>
       <div class="container">
@@ -24,65 +26,43 @@
         <div id="protein_analysis">
           <div class="columns">
             <div class="column">
-              <textarea v-model="sequence" class="textarea" placeholder="Enter protein sequence"></textarea>
+              <textarea v-model="fasta" class="textarea" placeholder="Enter protein sequences as fasta format"></textarea>
             </div>
           </div>
 
-          <div class="columns">
-
-            <div class="column">
-              <div class="card">
-                <div class="card-content">
-                  <p>Molecular Weight</p>
-                  <p>{{ molecular_weight }}</p>
-                </div>
+          <div class="tile is-ancestor">
+            <div class="tile">
+              <div class="tile is-parent">
+                <article class="tile is-child">
+                  <canvas id="property" height="200%"></canvas>
+                </article>
               </div>
-            </div>
 
-            <div class="column">
-              <div class="card">
-                <div class="card-content">
-                  <p>Gravy <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7108955?dopt=Abstract"><i class="far fa-question-circle"></i></a></p>
-                  <p>{{ gravy }}</p>
-                </div>
+              <div class="tile is-parent is-7">
+                <article class="tile is-child">
+                  <canvas id="aa_dist" height="145%"></canvas>
+                </article>
               </div>
-            </div>
-
-            <div class="column">
-              <div class="card">
-                <div class="card-content">
-                  <p>Absorbance <a target="_blank" href="https://web.expasy.org/protparam/protparam-doc.html"><i class="far fa-question-circle"></i></a></p>
-                  <p>{{ absorbance }}</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="column">
-              <div class="card">
-                <div class="card-content">
-                  <p>Instability Index <a target="_blank" href="https://web.expasy.org/protparam/protparam-doc.html"><i class="far fa-question-circle"></i></a></p>
-                  <p>{{ instability_index }}</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="columns">
-            <div class="column">
-              <canvas id="aa_dist" height="50%"></canvas>
             </div>
           </div>
 
-          <div class="columns">
-            <div class="column">
-              <canvas id="kd_hydrophobicity" height="50%" style="overflow:auto; width"></canvas>
+          <div class="tile is-ancestor">
+            <div class="tile">
+              <div class="tile">
+                <div class="tile is-parent">
+                  <article class="tile is-child">
+                    <canvas id="kd_hydrophobicity" height="50%"></canvas>
+                  </article>
+                </div>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
 
+      <script src="utils.js"></script>
+      <script src="viz.js"></script>
       <script src="index.js"></script>
     </body>
 </html>

@@ -214,9 +214,11 @@ var sum  = function(arr) {
 };
 
 class ProtParam  {
-  constructor (protein) {
+  constructor (protein, id = '', description = '') {
     this.protein = protein.toUpperCase();
     this.aa_list = Array.from(this.protein)
+    this.id = id
+    this.description = description
   }
 
   count_amino_acids (){
@@ -241,12 +243,19 @@ class ProtParam  {
   get_amino_acids_percent (){
     var count_dict = this.count_amino_acids()
     for (var aa in count_dict) {
-      count_dict[aa] = count_dict[aa] / this.protein.length
+      if(this.protein.length==0){
+        continue
+      } else{
+        count_dict[aa] = count_dict[aa] / this.protein.length
+      }
     }
     return count_dict
   }
 
   molecular_weight (circular = false, monoisotopic = false){
+    if(this.protein.length==0){
+      return null
+    }
     // circular: Is the molecule circular (has no ends)?
     // monoisotopic: Use the monoisotopic mass tables?
     if(monoisotopic){
@@ -265,11 +274,17 @@ class ProtParam  {
   }
 
   gravy () {
+    if(this.protein.length==0){
+      return null
+    }
     var total_gravy = sum(this.aa_list.map(function(aa){ return kd[aa] }))
     return total_gravy / this.protein.length
   }
 
   absorbance() {
+    if(this.protein.length==0){
+      return null
+    }
     // Tyr Y , Thr T, Trp W, Cys C
     var ext_Y = 1490
     var ext_W = 5500
@@ -280,6 +295,9 @@ class ProtParam  {
   }
 
   instability_index() {
+    if(this.protein.length==0){
+      return null
+    }
     var score = 0.0
     for (var i in this.aa_list){
       i = parseInt(i)
