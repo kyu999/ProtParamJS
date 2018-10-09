@@ -216,7 +216,7 @@ var sum  = function(arr) {
 class ProtParam  {
   constructor (protein, id = '', description = '') {
     this.protein = protein.toUpperCase();
-    this.aa_list = Array.from(this.protein)
+    this.amino_acids = Array.from(this.protein)
     this.id = id
     this.description = description
   }
@@ -265,7 +265,7 @@ class ProtParam  {
       var water = 18.0153
       var weight_table = protein_weights
     }
-    var weight = sum(this.aa_list.map(function( aa ) { return weight_table[aa]; }))
+    var weight = sum(this.amino_acids.map(function( aa ) { return weight_table[aa]; }))
     weight -= (this.protein.length-1) * water
     if(circular){
       weight -= water
@@ -277,7 +277,7 @@ class ProtParam  {
     if(this.protein.length==0){
       return null
     }
-    var total_gravy = sum(this.aa_list.map(function(aa){ return kd[aa] }))
+    var total_gravy = sum(this.amino_acids.map(function(aa){ return kd[aa] }))
     return total_gravy / this.protein.length
   }
 
@@ -299,7 +299,7 @@ class ProtParam  {
       return null
     }
     var score = 0.0
-    for (var i in this.aa_list){
+    for (var i in this.amino_acids){
       i = parseInt(i)
       if(i >= this.protein.length - 1){
         return (10.0 / this.protein.length) * score
@@ -312,12 +312,7 @@ class ProtParam  {
   }
 
   kd_hydrophobicity(){
-    var data = []
-    for (var i in this.protein){
-      var aa = this.protein[i]
-      data.push(kd[aa])
-    }
-    return data
+    return this.amino_acids.map(function(aa){ return kd[aa] })
   }
 
 }
