@@ -277,7 +277,7 @@ class ProtParam  {
     if(this.protein.length==0){
       return null
     }
-    var total_gravy = sum(this.amino_acids.map(function(aa){ return kd[aa] }))
+    var total_gravy = sum(this.kd_hydrophobicity())
     return total_gravy / this.protein.length
   }
 
