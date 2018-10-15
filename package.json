@@ -1,0 +1,19 @@
+{
+  "name": "protparamjs",
+  "version": "1.0.0",
+  "description": "ProtParam module for javascript",
+  "main": "protparam.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyu999/ProtParamJS.git"
+  },
+  "author": "kyu999",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kyu999/ProtParamJS/issues"
+  },
+  "homepage": "https://github.com/kyu999/ProtParamJS#readme"
+}
