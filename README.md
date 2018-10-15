@@ -26,6 +26,8 @@ protparam = new ProtParam('AQEEGGGAS')
 ### Web App
 You can apply ProtParamJS and compare several proteins on the web browser at https://kyu999.github.io/ProtParamJS/
 
+<img src="webapp_image.png">
+
 ---
 
 ### Reference
