@@ -1,4 +1,4 @@
-ProtParam module for javascript
+# ProtParam module for javascript
 
 ### Installation
 
