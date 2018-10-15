@@ -1,6 +1,6 @@
 {
   "name": "protparamjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ProtParam module for javascript",
   "main": "protparam.js",
   "scripts": {

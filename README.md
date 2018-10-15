@@ -10,7 +10,7 @@ ProtParamJS is a JavaScript version of ProtParam, and ProtParam is a tool to ana
 #### CDN
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/protparamjs@1.0.0/protparam.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/protparamjs@1.0.1/protparam.js"></script>
 ```
 
 #### NPM
