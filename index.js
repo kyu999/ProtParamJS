@@ -9,11 +9,9 @@ var protein_analysis = new Vue({
         return null
       }
       records = parse_fasta(this.fasta)
-      for (var i in records){
-        record = records[i]
-        protparam = new ProtParam(record['sequence'], id = record['id'], description = record['description'])
-        protparams.push(protparam)
-      }
+      protparams = records.map(function(record){ return new ProtParam(record['sequence'],
+                                                                      id = record['id'],
+                                                                      description = record['description']) })
       return protparams
     }
   },
