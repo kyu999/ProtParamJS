@@ -264,7 +264,7 @@ let sum = function (arr) {
     });
 };
 
-class ProtParam {
+export default class ProtParam {
 
     /**
      *

@@ -2,7 +2,7 @@
   "name": "protparamjs",
   "version": "1.0.1",
   "description": "ProtParam module for javascript",
-  "main": "protparam.js",
+  "main": "protparam.es.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
